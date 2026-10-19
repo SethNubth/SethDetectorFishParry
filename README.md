@@ -2,7 +2,10 @@
 
 Addon de raid líder para ICC 25H - Naerzone / Warmane 3.3.5a.
 Hecho para detectar y funar trolls sin spam.
-
+cd SethDetectorFishParry
+git add .
+git commit -m "v1.9 sin biberon - pre-aviso 3s + contador + FAIL con daño"
+git push
 ---
 
 ### ¿Qué hace?
