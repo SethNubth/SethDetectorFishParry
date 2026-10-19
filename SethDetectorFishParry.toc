@@ -1,8 +1,7 @@
 ## Interface: 30300
 ## Title: SethDetectorFishParry
-## Notes: Detector Festin + Parry + Pull Pet + MC Lady con daño
+## Notes: Lady sin biberon - MC counter + FAIL daño
 ## Author: Seth
-## Version: 1.8 FINAL
+## Version: 1.9
 ## SavedVariables: SethDetectorDB
-
 SethDetectorFishParry.lua
