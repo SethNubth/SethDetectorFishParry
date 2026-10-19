@@ -1,9 +1,8 @@
 ## Interface: 30300
-## Title: SethDetectorFishParry | Fish + Parry Haste Detector
-## Title-esES: SethDetector - Troll Festín + Parry Haste
-## Author: Seth v1.0 - Naerzone Fix
-## Version: 1.0
-## Notes: Detecta trolls del Festín de Pescado y daño por Parry Haste en raid. Alertas en /BANDA anti-mute. 0 Lua Errors.
-## Notes-esES: Detecta trolls del Festín y Parry Haste. Español, /BANDA, 0 Errores.
+## Title: SethDetectorFishParry
+## Notes: Detector Festin + Parry + Pull Pet + MC Lady con daño
+## Author: Seth
+## Version: 1.8 FINAL
+## SavedVariables: SethDetectorDB
 
 SethDetectorFishParry.lua
