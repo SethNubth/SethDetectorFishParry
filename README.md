@@ -89,3 +89,31 @@ Para raids que quieren matar bosses, no compañeros controlados.
 - Contador de MC: `MC: 2/3 controlados`
 - Auto-marcar calavera al controlado
 - Log final: Quien más MCs mató en la noche
+
+- 
+- `SPELL_CAST_START (71289)` -> Pre-aviso 3s
+- `SPELL_AURA_APPLIED` -> Contador real (x/3)
+- `UNIT_DIED` -> FAIL con último damager + spell + daño para reporte
+- `SPELL_AURA_REMOVED` -> Estado del CC
+
+**4. FESTÍN - Spam de pescado**
+Detecta spam de festín >4 clicks en 5s.
+
+### Instalación
+`World of Warcraft/Interface/AddOns/SethDetectorFishParry` -> `/reload`
+
+### Comandos
+`/sdf testmc` - Prueba avisos de Lady
+`/sdf testparry` - Prueba aviso de Parry
+
+### Filosofía v1.9
+> Fish detecta el culpable, Parry detecta el mal posicionado, Lady solo cuenta. Sin biberón.
+> Si no sabes que hacer con un MC, no deberías estar en ICC 25H.
+
+### Changelog
+**v1.9** - Lady sin biberón + README completo Fish/Parry
+**v1.8** - FAIL con daño real
+**v1.4** - PULL con culpa de pet
+**v1.0** - Fish Parry inicial
+
+By SethNubth - Naerzone - ICC 25H Hardcore
