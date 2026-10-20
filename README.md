@@ -1,6 +1,6 @@
 # SethDetectorFishParry v1.8 FINAL - By Seth
 
-Addon de raid líder para ICC 25H - Naerzone / Warmane 3.3.5a.
+Addon de raid líder para ICC 25H - Naerzone 3.3.5a.
 Hecho para detectar y funar trolls sin spam.
 cd SethDetectorFishParry
 git add .
