@@ -1,119 +1,70 @@
-# SethDetectorFishParry v1.8 FINAL - By Seth
+# SethDetectorFishParry - v1.11.1 MANADA
+### By Seth | WotLK 3.3.5a | ICC Ready
 
-Addon de raid líder para ICC 25H - Naerzone 3.3.5a.
-Hecho para detectar y funar trolls sin spam.
-cd SethDetectorFishParry
-git add .
-git commit -m "v1.9 sin biberon - pre-aviso 3s + contador + FAIL con daño"
-git push
----
-
-### ¿Qué hace?
-
-**1. Anti-Trolleo Festín de Peces (Sindragosa / ICC)**
-Detecta quien clickea el Festín más de 4 veces.
-> `FESTIN: Pepito x5`
-
-**2. Detector de PULL con culpa de PET**
-Sabe si el pull lo hizo un Brujo, Caza o DK con su pet. No se escapa nadie.
-- Trackea `SPELL_SUMMON` + nombre `<Dueño>`
-> `PULL: DjBrujo via Guardia Vil pulleó a Sindragosa!`
-
-**3. Lady Susurramuerte - Mente Dominada (25N: 1 / 25H: 3)**
-La razón principal del addon. Avisa quien está controlado y quien lo mata en vez de hacerle CC.
-
-Mago = Poli | Druida = Ciclón | Sacer/War = Fear | Pala = Stun | Caza = Trampa Frost
-
-**Avisos cortos para no tapar pantalla:**
-
-Cuando entra MC:
-> `MC: Pepito! -> POLY/FEAR/CICLON/STUN - NO MATAR!`
-
-Cuando lo matan (con daño para el reporte):
-> `MC FAIL: XxWarxX MATO a Pepito! Torbellino 12.3k!`
-> `MC FAIL: HunterPro MATO a Pepito! Disparo 18.5k!`
-
-Incluye dueño de pet. Si la pet mata al controlado, sale el dueño.
+Addon de raid para funar con respeto. Detecta fails clásicos de ICC y los reporta en /BANDA con iconos y color de clase.
 
 ---
 
-### Instalación
+## 🔥 Que Detecta
 
-1. Descarga el .zip
-2. Extrae la carpeta `SethDetectorFishParry` en:
-`World of Warcraft/Interface/AddOns/`
-3. `/reload` en juego
-4. Debe salir: `Seth v1.8 FINAL - MC + FAIL daño ON`
+### 1. 🐯 Aspecto de la Manada - NUEVO v1.11.1
+Detecta si un Cazador tiene el Aspecto de la Manada activo EN COMBATE (nos aturde a todos).
 
-### Comandos
+**Mensaje Final:**
+> 🐯 |cFFABD473Pepito|r Señor Cazador tu aspecto de Manada ¡Perjudica a la Raid!..
 
-- `/sdf testmc` - Simula MC y MC FAIL (para probar RW)
-- `/sdf` - Ayuda
+- Scan al entrar en combate (`PLAYER_REGEN_DISABLED` / `ENCOUNTER_START`)
+- Detecta activación durante el boss
+- Auto-reset al quitar el aspecto
+- Anti-spam: 1 reporte por caza por combate
+- **/RAID:** Sale siempre (aunque no seas líder)
+- **/RW:** Sale solo si eres Líder o Asistente
 
-### Permisos de aviso
+### 2. 🍖 Festín de Pescado v1.9.3
+Sistema de contador con chistes y color de clase.
 
-- Si eres Líder / Asistente -> `RAID_WARNING` (pantalla central)
-- Si eres miembro -> `RAID` chat
-- Si estás solo -> print local
+- **x1:** `comio del festin! [Cocina] x1` |TInterface\Icons\INV_Misc_Food_64:20|t
+- **x2:** `esta haciendo cata de pescados, deja uno para los demas!`
+- **x3:** `el festin no es tu banco de peces! Controla ese click!`
+- **x4:** `confirmado como catador oficial del festin. Te pagan por click?`
+- **x5:** `si sigues asi le vas a dejar sin trabajo al de Cocina [450]!`
+- **x6:** `Te nombramos Chef del Año! Pero suelta el festin que es del raid!`
+- **x7+:** `Un hambriento en banda! xN!`
 
-### Compatibilidad
+Color de clase real con `RAID_CLASS_COLORS`
 
-- Cliente 3.3.5a (12340)
-- Naerzone, Warmane, WowTales, Monster
-- Idioma: Español / Inglés (detecta `Dominate Mind` y `Mente Dominada`)
-- No requiere libs externas. 0% lag.
+### 3. ⚔️ Parry Fail
+Detecta si pegas por delante del boss y te parrea.
+> ⚔️ PARRY FAIL: |cFFC79C6EPepito|r parreado!
 
-### Changelog
-
-**v1.8 FINAL**
-- Eliminado spam de `MC OK: Bien hecho`
-- Solo 2 mensajes: MC + MC FAIL con daño
-- Mensajes cortos proplayer
-
-**v1.7**
-- CC válidos: POLY, HEX, CICLON, FEAR, STUN, TRAMPA
-
-**v1.4**
-- Fix culpa de pet (Brujo/Caza/DK)
-
-### Hecho por
-
-Seth - Líder de raid ICC 25H Bogotá.
-Para raids que quieren matar bosses, no compañeros controlados.
-
-> "Si está en MC, se hace CC. Si lo matas, eres tu el boss."
+### 4. 🧠 Lady Susurramuerte MC
+- Cast: `Lady controla en 3s! (0/3)`
+- MC: `MC: Jugador (1/3)`
+- CC OK / DPS Lady
 
 ---
 
-**¿Ideas para v1.9?**
-- Contador de MC: `MC: 2/3 controlados`
-- Auto-marcar calavera al controlado
-- Log final: Quien más MCs mató en la noche
+## 💻 Comandos
+/sdf testmanada    - Testea mensaje de Manada
+/sdf testfestin    - Testea x1 al x6 del festin
+/sdf resetfestin   - Resetea contadores de festin y manada
 
-- 
-- `SPELL_CAST_START (71289)` -> Pre-aviso 3s
-- `SPELL_AURA_APPLIED` -> Contador real (x/3)
-- `UNIT_DIED` -> FAIL con último damager + spell + daño para reporte
-- `SPELL_AURA_REMOVED` -> Estado del CC
+---
 
-**4. FESTÍN - Spam de pescado**
-Detecta spam de festín >4 clicks en 5s.
+🛠️ Tecnico
 
-### Instalación
-`World of Warcraft/Interface/AddOns/SethDetectorFishParry` -> `/reload`
+- `GetColoredName(name, guid)` - Color por clase con fallback a `UnitClass()`
+- `SendBanda()` - `RAID` siempre, `print()` si no hay raid
+- `SendRW()` - Solo `IsRaidLeader()` o `IsRaidOfficer()` - protegido con `pcall`
+- `manadaReported` - Anti-spam tabla
+- `COMBAT_LOG_EVENT_UNFILTERED` - Parser principal
+- SpellID Manada: `13159`
 
-### Comandos
-`/sdf testmc` - Prueba avisos de Lady
-`/sdf testparry` - Prueba aviso de Parry
+---
 
-### Filosofía v1.9
-> Fish detecta el culpable, Parry detecta el mal posicionado, Lady solo cuenta. Sin biberón.
-> Si no sabes que hacer con un MC, no deberías estar en ICC 25H.
+📝 Licencia
 
-### Changelog
-**v1.9** - Lady sin biberón + README completo Fish/Parry
-**v1.8** - FAIL con daño real
-**v1.4** - PULL con culpa de pet
-**v1.0** - Fish Parry inicial
+By Seth - Free for ICC Raids
+"Si loopeas festin, te funamos con respeto"
 
-By SethNubth - Naerzone - ICC 25H Hardcore
+Version: 1.11.1 - 2026-05-13
