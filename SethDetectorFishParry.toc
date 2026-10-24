@@ -1,8 +1,8 @@
 ## Interface: 30300
-## Title: |cFF00FF00SethDetector|r FishParry |cFFFFD700v1.11.1 MANADA|r
-## Notes: Detecta: Festin x1-x6 con color de clase, Parry Fail, MC Lady, y Aspecto de la Manada en raid. Mensaje: Señor Cazador tu aspecto de Manada ¡Perjudica a la Raid!..
+## Title: |cFF00FF00SethDetector|r FishParry |cFFFFD700v1.16.0|r
+## Notes: Detecta Festin, Parry, MC y Manada en raid con registro y anti-spam.
 ## Author: SethNubth
-## Version: 1.11.1
-## SavedVariables: SethDetectorDB
+## Version: 1.16.0
+## SavedVariables: SethDetectorFishParryDB
 
 SethDetectorFishParry.lua
