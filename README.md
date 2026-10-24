@@ -41,14 +41,7 @@ x20+ ¡BOSS COMIENDO! ¡Wipe por hambre![450]
 
 1. Descarga la carpeta `SethDetectorFishParry`
 2. Ponla en `.../World of Warcraft/Interface/AddOns/`
-3. Asegurate que el `.toc` sea:
-
-Interface: 30300
-Title: SethDetectorFishParry |cff00ff00v1.16.2|r
-Notes: Sin freeze, sin spam, festin infinito
-Author: Seth
-Version: 1.16.2
-http://SethDetectorFishParry.lua
+3. Nota si la Carpeta al Descargar tiene -Main eliminar solo esa parte para colocarlo en tu carpeta addons 
 4. `/reload` en juego
 
 🎮 Comandos
@@ -90,11 +83,7 @@ Ver [CHANGELOG.md](CHANGELOG.md) completo.
 - **Fix & Optimización:** Seth + Comunidad Raid
 - **Idea original:** Detectar Hunters con Manada en ICC
 - **Tested en:** Icecrown Citadel 25H, RS 25H, TOC 25H
-##Naerzone WoTLK
-📄 Licencia
+##Naerzone WoTLk
 
-Uso libre para comunidad WOTLK. Si lo mejoras, mantén créditos a Seth.
+## 📄 Licencia
 
----
-**SethDetectorFishParry v1.16.2 - No más hunters con Manada, no más tragones de festín impunes.**
-¿Quieres que te genere también el zip con `README.md + CHANGELOG.md + .toc + .lua v1.16.2`
