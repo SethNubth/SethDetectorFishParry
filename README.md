@@ -1,5 +1,5 @@
-# SethDetectorFishParry - v1.11.1 MANADA
-### By Seth | WotLK 3.3.5a | ICC Ready
+# SethDetectorFishParry - v1.16.0 MANADA
+### By Seth | WotLK 3.3.5a | ICC,| SR Ready
 
 Addon de raid para funar con respeto. Detecta fails clásicos de ICC y los reporta en /BANDA con iconos y color de clase.
 
@@ -44,10 +44,13 @@ Detecta si pegas por delante del boss y te parrea.
 
 ---
 
-## 💻 Comandos
-/sdf testmanada    - Testea mensaje de Manada
-/sdf testfestin    - Testea x1 al x6 del festin
-/sdf resetfestin   - Resetea contadores de festin y manada
+## 💻✅ Comandos: `/seth stats | clear | status | manada | festin | parry | mc | help | on | off`
+
+## Comandos
+- `/seth` o `/seth stats` = resumen por jugador
+- `/seth clear` = limpia logs
+- `/seth status` = ver ajustes
+- `/seth manada/festin/parry/mc` = toggle individual
 
 ---
 
