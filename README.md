@@ -54,14 +54,12 @@ Detecta si pegas por delante del boss y te parrea.
 
 ---
 
----
-
 ## 📦 Instalación
 
 1. Copia la carpeta `SethDetectorFishParry` en `World of Warcraft\Interface\AddOns\`
 2. Debe contener:
-   - `SethDetectorFishParry.toc` (v1.11.1)
-   - `SethDetectorFishParry.lua` (v1.11.1)
+   - `SethDetectorFishParry.toc` (v1.16.0)
+   - `SethDetectorFishParry.lua` (v1.16.0)
    - `CHANGELOG.md`
    - `README.md`
 3. `/reload` en juego
@@ -70,7 +68,7 @@ Detecta si pegas por delante del boss y te parrea.
 
 ## 📜 Changelog
 
-Ver `CHANGELOG.md` para historial completo v1.0 a v1.11.1
+Ver `CHANGELOG.md` para historial completo v1.0 a v1.16.0
 
 ---
 
@@ -93,4 +91,4 @@ Ver `CHANGELOG.md` para historial completo v1.0 a v1.11.1
 By SethNubth - Free for ICC Raids
 "Si loopeas festin, te funamos con respeto"
 
-Version: 1.11.1 - 2026-05-13
+Version: v1.16.0 - 2026-05-13
