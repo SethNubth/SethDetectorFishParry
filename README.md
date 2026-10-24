@@ -1,94 +1,100 @@
-# SethDetectorFishParry - v1.16.0 MANADA
-### By Seth | WotLK 3.3.5a | ICC,| SR Ready
 
-Addon de raid para funar con respeto. Detecta fails clásicos de ICC y los reporta en /BANDA con iconos y color de clase.
+## SethDetectorFishParry | WOTLK 3.3.5
+
+Addon de raid para WotLK 3.3.5a que detecta fails de raid: **Aspecto de la Manada, Tragones de Festín, Parrys y MCs de Lady**. Sin freeze, sin spam, con reporte por jugador.
+
+> Hecho para comunidad raid hardcore. 0% lag en ICC 25H.
+
+![Version](https://img.shields.io/badge/version-v1.16.2%20FESTIN%20INFINITO-brightgreen)
+![Game](https://img.shields.io/badge/WoW-3.3.5a-blue)
+![Language](https://img.shields.io/badge/Lua-100%25-orange)
+
+✨ ¿Qué hace?
+
+| Módulo | Que detecta | Como avisa |
+| :--- | :--- | :--- |
+| **MANADA** `13159` | Hunter pone Aspecto de la Manada en combate | RAID + RAID_WARNING 1 vez cada 30s |
+| **FESTIN** `57301...` | Quien come del festín de pescado x1..x99 | RAID con mensaje divertido escalable |
+| **PARRY** `SWING_MISSED` | Tank/dps parreado por boss | Silencioso, solo log `/seth stats` |
+| **MC** `71289...` | Lady Susurramuerte control mental | Silencioso, solo log |
+
+🔥 v1.16.2 FESTIN INFINITO
+
+El addon ya no es el gritón que spameaba raid. Ahora es inteligente:
+
+- **Sin freeze:** Eliminado scan masivo de 4000 `UnitBuff` en pull. 0 ms lag.
+- **Anti-spam:** Parry/MC no gritan, Manada con cooldown 30s, Festín es el único divertido.
+- **Reporte pro:** `/seth stats` te dice quien falló más post-boss.
+- **Festín infinito:** Mensajes hasta x99.
+
+x1 comio del festin!
+x2 cata pescados, deja uno!
+x6 Chef del Año!
+x7 ¡Deja para el tanque!
+x8 ¿Stock para Naxx?
+x9 Tragón oficial de la guild!
+x10+ ¡Cocina sin trabajo!
+x15+ ¡BANEEN AL HAMBRE!
+x20+ ¡BOSS COMIENDO! ¡Wipe por hambre![450]
+
+📦 Instalación
+
+1. Descarga la carpeta `SethDetectorFishParry`
+2. Ponla en `.../World of Warcraft/Interface/AddOns/`
+3. Asegurate que el `.toc` sea:
+
+Interface: 30300
+Title: SethDetectorFishParry |cff00ff00v1.16.2|r
+Notes: Sin freeze, sin spam, festin infinito
+Author: Seth
+Version: 1.16.2
+http://SethDetectorFishParry.lua
+4. `/reload` en juego
+
+🎮 Comandos
+
+| Comando | Acción |
+| :--- | :--- |
+| `/seth` | Muestra resumen completo por jugador |
+| `/seth stats` | [parry] [festin] [manada] [mc] ordenado por count |
+| `/seth clear` | Limpia todos los logs |
+| `/seth status` | Muestra toggles activos |
+| `/seth manada` | On/Off detector Manada |
+| `/seth festin` | On/Off detector Festín |
+| `/seth parry` | On/Off detector Parry |
+| `/seth mc` | On/Off detector MC |
+| `/seth help` | Lista comandos |
+
+🧠 Cómo funciona (Técnico)
+
+- Usa `COMBAT_LOG_EVENT_UNFILTERED` con filtros `SPELL_AURA_APPLIED/REMOVED`, `SWING_MISSED`, `SPELL_CAST_START`
+- `ShouldWarn(key, seconds)` para throttle: evita spam de 20 mensajes en 2 segundos
+- `GetColoredName(guid)` usa `GetPlayerInfoByGUID` + `RAID_CLASS_COLORS` para nombres con color de clase
+- Festín detecta IDs: 57301, 57426, 57291, 57302, 58465, 58474, 58506, 57025
+- MC detecta: 71289, 71290, 72027, 72028, 73020, 68904 + fallback `spellName:find("domin")`
+- **Sin `UnitBuff` loop en `ENCOUNTER_START`** = fix definitivo del freeze original v1.11.1
+
+📝 Changelog
+
+Ver [CHANGELOG.md](CHANGELOG.md) completo.
+
+- **v1.11.1:** Versión original MANADA gritona + freeze en pull
+- **v1.14.0:** Amigo añade stats, toggles, anti-spam 10s/15s pero mantiene freeze
+- **v1.16.0:** Amigo fixea freeze eliminando scan, pone todo silencioso
+- **v1.16.1:** Fix técnico doble CombatLog + ClearStats auto
+- **v1.16.2:** Restaurado festín infinito divertido x7..x99 - **VERSIÓN ACTUAL**
+
+👑 Créditos
+
+- **Author:** """SethNubth"""
+- **Fix & Optimización:** Seth + Comunidad Raid
+- **Idea original:** Detectar Hunters con Manada en ICC
+- **Tested en:** Icecrown Citadel 25H, RS 25H, TOC 25H
+##Naerzone WoTLK
+📄 Licencia
+
+Uso libre para comunidad WOTLK. Si lo mejoras, mantén créditos a Seth.
 
 ---
-
-## 🔥 Que Detecta
-
-### 1. 🐯 Aspecto de la Manada - NUEVO v1.11.1
-Detecta si un Cazador tiene el Aspecto de la Manada activo EN COMBATE (nos aturde a todos).
-
-**Mensaje Final:**
-> 🐯 |cFFABD473Pepito|r Señor Cazador tu aspecto de Manada ¡Perjudica a la Raid!..
-
-- Scan al entrar en combate (`PLAYER_REGEN_DISABLED` / `ENCOUNTER_START`)
-- Detecta activación durante el boss
-- Auto-reset al quitar el aspecto
-- Anti-spam: 1 reporte por caza por combate
-- **/RAID:** Sale siempre (aunque no seas líder)
-- **/RW:** Sale solo si eres Líder o Asistente
-
-### 2. 🍖 Festín de Pescado v1.9.3
-Sistema de contador con chistes y color de clase.
-
-- **x1:** `comio del festin! [Cocina] x1` |TInterface\Icons\INV_Misc_Food_64:20|t
-- **x2:** `esta haciendo cata de pescados, deja uno para los demas!`
-- **x3:** `el festin no es tu banco de peces! Controla ese click!`
-- **x4:** `confirmado como catador oficial del festin. Te pagan por click?`
-- **x5:** `si sigues asi le vas a dejar sin trabajo al de Cocina [450]!`
-- **x6:** `Te nombramos Chef del Año! Pero suelta el festin que es del raid!`
-- **x7+:** `Un hambriento en banda! xN!`
-
-Color de clase real con `RAID_CLASS_COLORS`
-
-### 3. ⚔️ Parry Fail
-Detecta si pegas por delante del boss y te parrea.
-> ⚔️ PARRY FAIL: |cFFC79C6EPepito|r parreado!
-
-### 4. 🧠 Lady Susurramuerte MC
-- Cast: `Lady controla en 3s! (0/3)`
-- MC: `MC: Jugador (1/3)`
-- CC OK / DPS Lady
-
----
-
-## 💻✅ Comandos: `/seth stats | clear | status | manada | festin | parry | mc | help | on | off`
-
-## Comandos
-- `/seth` o `/seth stats` = resumen por jugador
-- `/seth clear` = limpia logs
-- `/seth status` = ver ajustes
-- `/seth manada/festin/parry/mc` = toggle individual
-
----
-
-## 📦 Instalación
-
-1. Copia la carpeta `SethDetectorFishParry` en `World of Warcraft\Interface\AddOns\`
-2. Debe contener:
-   - `SethDetectorFishParry.toc` (v1.16.0)
-   - `SethDetectorFishParry.lua` (v1.16.0)
-   - `CHANGELOG.md`
-   - `README.md`
-3. `/reload` en juego
-
----
-
-## 📜 Changelog
-
-Ver `CHANGELOG.md` para historial completo v1.0 a v1.16.0
-
----
-
-## 🛠️ Tecnico
-
-- `GetColoredName(name, guid)` - Color por clase con fallback a `UnitClass()`
-- `SendBanda()` - `RAID` siempre, `print()` si no hay raid
-- `SendRW()` - Solo `IsRaidLeader()` o `IsRaidOfficer()` - protegido con `pcall`
-- `manadaReported` - Anti-spam tabla
-- `COMBAT_LOG_EVENT_UNFILTERED` - Parser principal
-- SpellID Manada: `13159`
-
-🛠️ Tecnico
-
-
----
-
-📝 Licencia
-
-By SethNubth - Free for ICC Raids
-"Si loopeas festin, te funamos con respeto"
-
-Version: v1.16.0 - 2026-05-13
+**SethDetectorFishParry v1.16.2 - No más hunters con Manada, no más tragones de festín impunes.**
+¿Quieres que te genere también el zip con `README.md + CHANGELOG.md + .toc + .lua v1.16.2`
